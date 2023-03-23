@@ -10,6 +10,9 @@ export default class SkyHighBuilding extends Building {
   }
 
   set floor(floor) {
+    if (typeof floor !== 'number') {
+      throw TypeError('Floor must be a number');
+    }
     this._floor = floor; // eslint-disable-line
   }
 
