@@ -12,4 +12,12 @@ export default class Building {
 
   evacuationWarningMessage() { // eslint-disable-line
   }
+
+  set sqft(sqft) {
+    this._sqft = sqft; // eslint-disable-line
+  }
+
+  get sqft() {
+    return this._sqft // eslint-disable-line
+  }
 }
