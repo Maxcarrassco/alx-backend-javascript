@@ -11,6 +11,5 @@ export default class Building {
   }
 
   evacuationWarningMessage() { // eslint-disable-line
-    throw new Error('evacuationWarningMessage must be implemented');
   }
 }
