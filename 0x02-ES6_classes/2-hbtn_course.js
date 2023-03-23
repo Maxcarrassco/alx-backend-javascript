@@ -1,25 +1,39 @@
 export default class HolbertonCourse {
   constructor(name, length, students) {
-    this.setName(name);
-    this.setLength(length);
-    this.setStudents(students);
+    if (typeof name !== 'string') {
+      throw TypeError('Name must be a string');
+    }
+    if (typeof length !== 'number') {
+      throw TypeError('Length must be a number');
+    }
+    if (typeof students !== 'object') {
+      throw TypeError('students must be array of strings');
+    }
+    for (const val of students) {
+      if (typeof val !== 'string') {
+        throw TypeError('students must be array of strings');
+      }
+    }
+    this._name = name; // eslint-disable-line
+    this._length = length; // eslint-disable-line
+    this._students = students; // eslint-disable-line
   }
 
-  setName(name) {
+  set name(name) {
     if (typeof name !== 'string') {
       throw TypeError('Name must be a string');
     }
     this._name = name; // eslint-disable-line
   }
 
-  setLength(length) {
+  set length(length) {
     if (typeof length !== 'number') {
       throw TypeError('Length must be a number');
     }
     this._length = length; // eslint-disable-line
   }
 
-  setStudents(students) {
+  set students(students) {
     if (typeof students !== 'object') {
       throw TypeError('students must be array of strings');
     }
@@ -31,15 +45,15 @@ export default class HolbertonCourse {
     this._students = students; // eslint-disable-line
   }
 
-  getName() {
+  get name() {
     return this._name; // eslint-disable-line
   }
 
-  getLength() {
+  get length() {
     return this._length; // eslint-disable-line
   }
 
-  getStudents() {
+  get students() {
     return this._students; // eslint-disable-line
   }
 }
