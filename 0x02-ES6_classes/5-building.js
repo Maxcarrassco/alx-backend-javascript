@@ -3,9 +3,14 @@ export default class Building {
     if (typeof sqft !== 'number') {
       throw TypeError('Sqft must be a number');
     }
-    if (this.evacuationWarningMessage === undefined) {
+    if (this.constructor !== Building
+        && this.evacuationWarningMessage === Building.prototype.evacuationWarningMessage) {
       throw new Error('Class extending Building must override evacuationWarningMessage');
     }
     this._sqft = sqft; // eslint-disable-line
+  }
+
+  evacuationWarningMessage() { // eslint-disable-line
+    throw new Error('evacuationWarningMessage must be implemented');
   }
 }
