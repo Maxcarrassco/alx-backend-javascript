@@ -57,3 +57,12 @@ const executeWork = (employee: any): string => {
   }
   return employee.workTeacherTasks();
 }
+
+type Subjects = 'Math' | 'History';
+
+const teachClass = (subject: Subjects): string => {
+  if (subject === 'Math') {
+    return 'Teaching Math';
+  }
+  return 'Teaching History';
+}
