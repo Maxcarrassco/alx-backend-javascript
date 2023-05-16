@@ -1,4 +1,5 @@
 const { readFile } = require('fs');
+
 const printStats = (data) => {
   const dataList = data.split('\n').splice(1);
   const stats = { CS: [], SWE: [] };
