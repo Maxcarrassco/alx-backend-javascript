@@ -18,7 +18,7 @@ const countStudents = (file) => {
     }
     console.log(`Number of students: ${students}`);
     for (const [key, value] of Object.entries(stats)) {
-      console.log(`Number of students in ${key}: ${value.length}. ${value.join(', ')}`);
+      console.log(`Number of students in ${key}: ${value.length}. List: ${value.join(', ')}`);
     }
   } catch (err) {
     if (err.code === 'ENOENT') {
