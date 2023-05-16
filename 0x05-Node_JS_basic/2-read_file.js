@@ -20,8 +20,11 @@ const countStudents = (file) => {
     for (const [key, value] of Object.entries(stats)) {
       console.log(`Number of students in ${key}: ${value.length}. ${value.join(', ')}`);
     }
-  } catch (error) {
-    throw new Error('Cannot load the database');
+  } catch (err) {
+    if (err.code === 'ENOENT') {
+      throw new Error('Cannot load the database');
+    }
+    throw err;
   }
 };
 
