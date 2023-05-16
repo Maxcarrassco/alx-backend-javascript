@@ -19,19 +19,17 @@ const printStats = (data) => {
   }
 };
 
-const countStudents = (file) => {
-  return new Promise((resolve, reject) => {
-    readFile(file, 'utf-8', (err, data) => {
-      if (err) {
-        if (err.code === 'ENOENT') {
-          throw new Error('Cannot load the database');
-        }
-        reject(err);
-      } else {
-        resolve(printStats(data));
+const countStudents = (file) => new Promise((resolve, reject) => {
+  readFile(file, 'utf-8', (err, data) => {
+    if (err) {
+      if (err.code === 'ENOENT') {
+        reject(new Error('Cannot load the database'));
       }
-    });
+      reject(err);
+    } else {
+      resolve(printStats(data));
+    }
   });
-};
+});
 
 module.exports = countStudents;
