@@ -4,9 +4,9 @@ const DBFile = (process.argv.length > 2) ? process.argv[2] : '';
 
 class StudentsController {
   static getAllStudents(request, response) {
-    response.statusCode = 200;
-    response.write('This is the list of our students\n');
     readDatabase(DBFile).then((data) => {
+      response.statusCode = 200;
+      response.write('This is the list of our students\n');
       for (const [key, val] of Object.entries(data)) {
         response.write(`Number of students in ${key}: ${val.length}. List: ${val.join(', ')}`);
         if (key === 'CS') {
