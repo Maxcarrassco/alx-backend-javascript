@@ -16,7 +16,7 @@ const printStats = (data) => {
       students += 1;
     }
   }
-  const out = ['This is the list of our students', `Number of students: ${students}`];
+  const out = [`Number of students: ${students}`];
   for (const [key, value] of Object.entries(stats)) {
     out.push(`Number of students in ${key}: ${value.length}. List: ${value.join(', ')}`);
   }
@@ -38,15 +38,14 @@ const countStudents = (file) => new Promise((resolve, reject) => {
 
 const app = http.createServer((req, res) => {
   const reqUrl = url.parse(req.url).pathname;
-  res.setHeader('Content-Type', 'text/plain');
   if (reqUrl === '/') {
     res.end('Hello Holberton School!');
   } else if (reqUrl === '/students') {
+    res.write('This is the list of our students\n');
     countStudents(process.argv[2]).then((data) => {
       res.end(data.join('\n'));
     }).catch((err) => {
-      console.log(err);
-      res.end();
+      res.end(err.message);
     });
   }
 });
