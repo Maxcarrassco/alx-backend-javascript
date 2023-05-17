@@ -8,7 +8,10 @@ class StudentsController {
     response.write('This is the list of our students\n');
     readDatabase(DBFile).then((data) => {
       for (const [key, val] of Object.entries(data)) {
-        response.write(`Number of students in ${key}: ${val.length}. List: ${val.join(', ')}\n`);
+        response.write(`Number of students in ${key}: ${val.length}. List: ${val.join(', ')}`);
+        if (key === 'CS') {
+          response.write('\n');
+        }
       }
       response.end();
     }).catch((err) => {

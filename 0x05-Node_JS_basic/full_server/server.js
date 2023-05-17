@@ -6,3 +6,5 @@ const app = express();
 app.use(router);
 
 app.listen(1245, () => console.log('server started!!'));
+
+export default app;
